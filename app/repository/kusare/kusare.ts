@@ -7,11 +7,11 @@ export const Kusare: SketchInterface = {
     preload: (p5: p5Types) => {},
 
     windowResized: (p5: p5Types) => {
-        p5.resizeCanvas(p5.windowWidth, p5.windowHeight)
+        p5.resizeCanvas(p5.windowWidth, p5.windowHeight / 2)
     },
 
     setup: (p5: p5Types, canvasParentRef: Element) => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL).parent(
+        p5.createCanvas(p5.windowWidth, p5.windowHeight / 2, p5.WEBGL).parent(
             canvasParentRef
         )
         p5.colorMode(p5.HSB, p5.width, p5.height, 100)

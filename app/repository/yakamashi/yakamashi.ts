@@ -7,11 +7,11 @@ export const Yakamashi: SketchInterface = {
     preload: (p5: p5Types) => {},
 
     windowResized: (p5: p5Types) => {
-        p5.resizeCanvas(p5.windowWidth, p5.windowHeight)
+        p5.resizeCanvas(p5.windowWidth, p5.windowHeight / 2)
     },
 
     setup: (p5: p5Types, canvasParentRef: Element) => {
-        p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL).parent(
+        p5.createCanvas(p5.windowWidth, p5.windowHeight / 2, p5.WEBGL).parent(
             canvasParentRef
         )
         p5.colorMode(p5.HSB, p5.width, p5.height, 100)
@@ -21,7 +21,7 @@ export const Yakamashi: SketchInterface = {
     draw: (p5: p5Types) => {
         p5.background(0)
         p5.normalMaterial()
-        p5.rotateX(p5.noise(angle) * 7)
+        p5.rotateX(p5.noise(angle) * 2)
         p5.rotateY(angle)
         angle = angle + 0.01
         p5.box(100)

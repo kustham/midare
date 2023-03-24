@@ -6,11 +6,13 @@ const Sketch = dynamic(() => import('react-p5'), { ssr: false })
 
 export default function SketchKusare() {
     return (
-        <Sketch
-            preload={Kusare.preload}
-            windowResized={Kusare.windowResized}
-            setup={Kusare.setup}
-            draw={Kusare.draw}
-        />
+        <>
+            <Sketch
+                preload={Kusare.preload}
+                windowResized={Kusare.windowResized}
+                setup={Kusare.setup}
+                draw={Kusare.draw}
+            />
+        </>
     )
 }
