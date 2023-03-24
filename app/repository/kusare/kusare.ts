@@ -1,7 +1,9 @@
 import { SketchInterface } from '@/app/common/SketchInterface'
 import p5Types from 'p5'
+import { KusareEntity } from './kusareEntity'
 
-let angle = 0
+const frameRate: number = 10
+const kusare = new KusareEntity(0)
 
 export const Kusare: SketchInterface = {
     preload: (p5: p5Types) => {},
@@ -11,6 +13,7 @@ export const Kusare: SketchInterface = {
     },
 
     setup: (p5: p5Types, canvasParentRef: Element) => {
+        p5.frameRate(frameRate)
         p5.createCanvas(p5.windowWidth, p5.windowHeight / 2, p5.WEBGL).parent(
             canvasParentRef
         )
@@ -18,12 +21,13 @@ export const Kusare: SketchInterface = {
         p5.noStroke()
     },
 
+    mousePressed: function (p5: p5Types): void {
+        console.log('mousePressed!')
+    },
+
     draw: (p5: p5Types) => {
         p5.background(0)
         p5.normalMaterial()
-        p5.rotateX(p5.noise(angle) * 7)
-        p5.rotateY(angle)
-        angle = angle + 0.01
-        p5.box(100)
+        kusare.run(p5)
     },
 }

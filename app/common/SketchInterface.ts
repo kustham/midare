@@ -7,5 +7,7 @@ export interface SketchInterface {
 
     setup: (p5: p5Types, canvasParentRef: Element) => void
 
+    mousePressed: (p5: p5Types) => void
+
     draw: (p5: p5Types) => void
 }
