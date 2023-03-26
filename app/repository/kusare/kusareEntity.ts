@@ -1,27 +1,48 @@
 import p5Types from 'p5'
 
 export class KusareEntity {
-    angle: number
-    id: string
+    dirtiness: number
+    volume: number
+    stink: number
+    painful: number
 
-    constructor(_angle: number) {
-        this.angle = _angle
-        this.id = this.getUniqueStr()
+    //腐れの構成要素
+    //1.醜さ(dirtiness)
+    //2.規模(volume)
+    //3.臭さ(stink)
+    //4.切なさ(painful)
+    constructor(
+        _dirtiness: number,
+        _volume: number,
+        _stink: number,
+        _painful: number
+    ) {
+        this.dirtiness = _dirtiness
+        this.volume = _volume
+        this.stink = _stink
+        this.painful = _painful
     }
+
     run(p5: p5Types) {
-        p5.rotateX(p5.noise(this.angle) * p5.noise(this.angle))
-        p5.rotateY(this.angle)
-        this.angle = this.angle + 0.01
-        p5.box(100)
-        console.log(this.angle)
-    }
-
-    getUniqueStr(myStrong?: number): string {
-        let strong = 1000
-        if (myStrong) strong = myStrong
-        return (
-            new Date().getTime().toString(16) +
-            Math.floor(strong * Math.random()).toString(16)
+        p5.bezier(
+            -this.dirtiness,
+            this.dirtiness,
+            this.volume,
+            -this.volume,
+            this.stink,
+            -this.stink,
+            this.painful,
+            -this.painful
+        )
+        p5.bezier(
+            this.dirtiness,
+            -this.dirtiness,
+            -this.volume,
+            this.volume,
+            -this.stink,
+            this.stink,
+            -this.painful,
+            this.painful
         )
     }
 }

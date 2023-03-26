@@ -1,6 +1,6 @@
 import p5Types from 'p5'
 
-export interface SketchInterface {
+export interface Sketch {
     preload: (p5: p5Types) => void
 
     windowResized: (p5: p5Types) => void

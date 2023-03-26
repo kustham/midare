@@ -1,10 +1,10 @@
-import { SketchInterface } from '@/app/common/SketchInterface'
+import { Sketch } from '@/app/common/SketchInterface'
 import p5Types from 'p5'
 
 let angle = 0
 
-export const Yakamashi: SketchInterface = {
-    preload: (p5: p5Types) => { },
+export const Yakamashi: Sketch = {
+    preload: (p5: p5Types) => {},
 
     windowResized: (p5: p5Types) => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight / 2)
@@ -28,5 +28,5 @@ export const Yakamashi: SketchInterface = {
     },
     mousePressed: function (p5: p5Types): void {
         throw new Error('Function not implemented.')
-    }
+    },
 }
