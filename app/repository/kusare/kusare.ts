@@ -1,13 +1,13 @@
-import { Sketch } from '@/app/common/SketchInterface'
 import p5Types from 'p5'
-import { KusareFactory } from './kusareFactory'
 import { KusareEntity } from './kusareEntity'
+import { KusareFactory } from './kusareFactory'
+import { Sketch } from '@/app/common/SketchInterface'
 
 const FRAME_RATE: number = 10
 const PRODUCUTION_NUMBER: number = 10
 const DIRTINESS_SEED: number = 0.1
 const VOLUME_SEED: number = 2.8
-const STINK_SEED: number = 3.3
+const STINK_SEED: number = 1.3
 const PAINFUL_SEED: number = 1.4
 let kusare: Array<KusareEntity> = KusareFactory.make(
     PRODUCUTION_NUMBER,
@@ -17,8 +17,10 @@ let kusare: Array<KusareEntity> = KusareFactory.make(
     PAINFUL_SEED
 )
 
+let nowPlaying: Boolean = true
+
 export const Kusare: Sketch = {
-    preload: (p5: p5Types) => {},
+    preload: () => {},
 
     windowResized: (p5: p5Types) => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight / 2)
@@ -33,18 +35,30 @@ export const Kusare: Sketch = {
         p5.noStroke()
     },
 
-    mousePressed: function (p5: p5Types): void {
-        console.log('mousePressed!')
+    mousePressed: function (): void {
+        //none
+    },
+
+    mouseClicked: function (p5: p5Types): void {
+        if (nowPlaying) {
+            nowPlaying = false
+            console.log('Loop Stop')
+            p5.noLoop()
+        } else {
+            nowPlaying = true
+            console.log('Loop Restart')
+            p5.loop()
+        }
     },
 
     draw: (p5: p5Types) => {
         p5.background(0)
         p5.normalMaterial()
-        p5.stroke(p5.random(255))
-        p5.rotateX(p5.frameCount / 10)
-        p5.rotateZ(p5.noise(p5.frameCount / 10))
+
         kusare.forEach((k) => {
-            k.run(p5)
+            k.updates(p5)
+            k.render(p5)
+            k.logger()
         })
     },
 }
