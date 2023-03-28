@@ -1,5 +1,4 @@
 import { KusareEntity } from './kusareEntity'
-import p5 from 'p5'
 
 export const KusareFactory = {
     make: (n: number, d: number, v: number, s: number, p: number) => {
@@ -10,8 +9,8 @@ export const KusareFactory = {
                     estimateDirtiness(d),
                     estimateVolume(v),
                     estimateStink(s),
-                    estimatePainful(p)
-                )
+                    estimatePainful(p),
+                ),
             )
         }
         return kusare
@@ -20,9 +19,9 @@ export const KusareFactory = {
 
 function estimateDirtiness(d: number): number {
     let dirtiness = 0
-    dirtiness = Math.pow(d**d, Math.random())
+    dirtiness = Math.pow(d ** d, Math.random())
 
-    return dirtiness*100
+    return dirtiness * 100
 }
 
 function estimateVolume(v: number): number {

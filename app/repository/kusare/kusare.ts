@@ -1,7 +1,7 @@
-import { Sketch } from '@/app/common/SketchInterface'
 import p5Types from 'p5'
-import { KusareFactory } from './kusareFactory'
 import { KusareEntity } from './kusareEntity'
+import { KusareFactory } from './kusareFactory'
+import { Sketch } from '@/app/common/SketchInterface'
 
 const FRAME_RATE: number = 10
 const PRODUCUTION_NUMBER: number = 10
@@ -20,7 +20,7 @@ let kusare: Array<KusareEntity> = KusareFactory.make(
 let nowPlaying: Boolean = true
 
 export const Kusare: Sketch = {
-    preload: (p5: p5Types) => {},
+    preload: () => {},
 
     windowResized: (p5: p5Types) => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight / 2)
@@ -35,7 +35,7 @@ export const Kusare: Sketch = {
         p5.noStroke()
     },
 
-    mousePressed: function (p5: p5Types): void {
+    mousePressed: function (): void {
         //none
     },
 
