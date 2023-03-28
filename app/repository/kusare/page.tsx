@@ -11,6 +11,7 @@ export default function SketchKusare() {
                 preload={Kusare.preload}
                 windowResized={Kusare.windowResized}
                 setup={Kusare.setup}
+                mouseClicked={Kusare.mouseClicked}
                 mousePressed={Kusare.mousePressed}
                 draw={Kusare.draw}
             />

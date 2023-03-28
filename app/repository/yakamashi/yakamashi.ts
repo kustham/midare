@@ -4,7 +4,7 @@ import p5Types from 'p5'
 let angle = 0
 
 export const Yakamashi: Sketch = {
-    preload: (p5: p5Types) => {},
+    preload: (p5: p5Types) => { },
 
     windowResized: (p5: p5Types) => {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight / 2)
@@ -29,4 +29,7 @@ export const Yakamashi: Sketch = {
     mousePressed: function (p5: p5Types): void {
         throw new Error('Function not implemented.')
     },
+    mouseClicked: function (p5: p5Types): void {
+        throw new Error('Function not implemented.')
+    }
 }

@@ -9,5 +9,7 @@ export interface Sketch {
 
     mousePressed: (p5: p5Types) => void
 
+    mouseClicked: (p5: p5Types) => void
+
     draw: (p5: p5Types) => void
 }

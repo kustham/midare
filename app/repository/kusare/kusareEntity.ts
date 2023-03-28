@@ -23,26 +23,44 @@ export class KusareEntity {
         this.painful = _painful
     }
 
-    run(p5: p5Types) {
-        p5.bezier(
+    render(p5: p5Types) {
+        p5.line(
             -this.dirtiness,
             this.dirtiness,
-            this.volume,
-            -this.volume,
             this.stink,
             -this.stink,
             this.painful,
             -this.painful
         )
-        p5.bezier(
+        p5.line(
             this.dirtiness,
             -this.dirtiness,
-            -this.volume,
-            this.volume,
             -this.stink,
             this.stink,
             -this.painful,
             this.painful
         )
+    }
+
+    updates(p5: p5Types) {
+        //Weight Change
+        p5.strokeWeight(p5.random(2, 5))
+        //Color Change
+        p5.stroke(p5.random(255), p5.random(255), p5.random(255))
+        //Parameters Update
+        this.painful -= Math.log(this.dirtiness + this.stink)
+        this.dirtiness += Math.log(
+            this.volume * p5.noise(this.dirtiness, this.stink, this.painful)
+        )
+        this.stink += Math.log(
+            this.volume * p5.noise(this.dirtiness, this.stink, this.painful)
+        )
+    }
+
+    logger() {
+        console.log('醜さ:' + this.dirtiness)
+        console.log('規模:' + this.volume)
+        console.log('臭さ:' + this.stink)
+        console.log('切なさ:' + this.painful)
     }
 }
